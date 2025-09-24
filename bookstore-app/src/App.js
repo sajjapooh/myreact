@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+//import Footer from './components/Footer';
+import NotFound from './components/NotFound';
+
+import HomePage from './pages/HomePage';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Navigation Bar - แสดงในทุกหน้า */}
+      <Navbar />
+      <main className="main-content">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        {/* หน้า 404 - สำหรับ URL ที่ไม่มีอยู่ */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      </main>
+      {/* Footer - แสดงในทุกหน้า */}
+      {/* <Footer /> */}
     </div>
   );
 }
